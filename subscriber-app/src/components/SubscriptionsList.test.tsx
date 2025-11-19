@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'; 
-// 2. Remove import '@testing-library/jest-dom'; (it is in setupTests.ts now)
+// Remove import '@testing-library/jest-dom'; (it is in setupTests.ts now)
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
@@ -17,7 +17,7 @@ const renderWithRedux = (component: any) => {
 describe('SubscriptionsList', () => {
   it('shows loading state initially', () => {
     renderWithRedux(<SubscriptionsList />);
-    // 3. expect is now available globally
+    // expect is now available globally
     expect(screen.getByText(/Loading/i)).toBeInTheDocument();
   });
 });
