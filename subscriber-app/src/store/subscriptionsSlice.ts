@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { fetchSubscriptions, Subscription } from '../api/mock-data';
+import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
+import { fetchSubscriptions, type Subscription } from '../api/mock-data';
 
 interface SubscriptionsState {
   items: Subscription[];
