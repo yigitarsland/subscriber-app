@@ -4,6 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import subscriptionsReducer from '../store/subscriptionsSlice';
 import { SubscriptionsList } from './SubscriptionsList';
 import { describe, it, expect } from 'vitest';
+import '@testing-library/jest-dom'; // Added to fix jest-dom import error
 
 // Helper to render with Redux
 const renderWithRedux = (component: any) => {

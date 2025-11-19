@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Subscription } from '../api/mock-data';
+import type { Subscription } from '../api/mock-data'; // Added type import
 import { formatDate, formatCurrency } from '../utils/formatters';
 import { useDispatch } from 'react-redux';
 import { cancelSubscription } from '../store/subscriptionsSlice';

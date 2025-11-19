@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { RootState, AppDispatch } from '../store/store';
+import type { RootState, AppDispatch } from '../store/store'; // Added type import
 import { getSubscriptions } from '../store/subscriptionsSlice';
 import { SubscriptionCard } from './SubscriptionCard';
 
@@ -24,7 +24,8 @@ const Message = styled.div`
 
 export const SubscriptionsList = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { items, status, error } = useSelector((state: RootState) => state.subscriptions);
+  // Default to empty object if state is undefined to prevent crash
+  const { items, status, error } = useSelector((state: RootState) => state.subscriptions || { items: [], status: 'idle', error: null });
 
   useEffect(() => {
     if (status === 'idle') {
@@ -34,7 +35,8 @@ export const SubscriptionsList = () => {
 
   let content;
 
-  if (status === 'loading') {
+  // FIX: Added 'idle' here so it shows Loading immediately instead of waiting for the first render
+  if (status === 'loading' || status === 'idle') {
     content = <Message>Loading subscriptions...</Message>;
   } else if (status === 'failed') {
     content = <Message style={{ color: 'red' }}>{error}</Message>;
